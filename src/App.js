@@ -1,10 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
+import ContactList from './components/ContactList';
 
-class App extends Component {
+class App extends React.Component {
   render() {
+    
     return (
-      <div>
-        Hello World
+      <div className="App">
+        <ContactList contacts={[
+          {name: 'Tyler'},
+          {name: 'Kim'},
+          {name: 'Richard'}
+        ]}/>
+        <ContactList contacts={[
+          {name: 'Jim'},
+          {name: 'Allison'},
+          {name: 'Natalie'}
+        ]}/>
       </div>
     );
   }
