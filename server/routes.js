@@ -1,13 +1,10 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const cors = require('cors')
-const config = require('../database/config')
-const contacts = require('../database/contacts')
+const express = require('express');
+const config = require('../database/config');
+const contacts = require('../database/contacts');
+const app = express();
 
-const app = express()
-
-app.use(express.static('../public'))
-app.use(cors())
+app.use(express.static('../public'));
+app.use(express.json());
 
 app.get('/', (req, res) => {
   const help = `
@@ -50,7 +47,7 @@ app.delete('/contacts/:id', (req, res) => {
   res.send(contacts.remove(req.token, req.params.id))
 })
 
-app.post('/contacts', bodyParser.json(), (req, res) => {
+app.post('/contacts', express.json(), (req, res) => {
   const { name, handle } = req.body
 
   if (name && handle) {
